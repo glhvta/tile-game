@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 
-import getTiles from './utils/getTiles'
+import getTiles from '../utils/getTiles'
 
 describe('Tiles-Game-Utils', function () {
   describe('#get tiles', function () {
