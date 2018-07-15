@@ -16,7 +16,7 @@ export default styled.div`
   ul {
     display: flex;
     flex-flow: row wrap;
-    width: ${getTilesBoxWidth(fullTileWidth, 1)}px;
+    width: ${props => getTilesBoxWidth(fullTileWidth, props.level)}px;
     padding: 10px;
     background-color: #3b3a36;
   }

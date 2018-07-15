@@ -1,4 +1,4 @@
-import { UPDATE_TILES, CREATE_ACTIVE_TILES, REMOVE_ACTIVE_TILES } from '../actionTypes';
+import { UPDATE_TILES, CREATE_ACTIVE_TILES, REMOVE_ACTIVE_TILES, MAKE_TILE_ACTIVE } from '../actionTypes';
 import { getTiles, createActiveTiles } from '../utils/tile-game';
 
 const initialState = {
@@ -19,10 +19,15 @@ const tiles = (state = initialState, action) => {
       const { tilesNumber, level } = action.payload;
       const activeTiles = createActiveTiles(tilesNumber, level);
 
-      return {...state, activeTiles, tilesToRemember: [...activeTiles]}
+      return {...state, activeTiles, tilesToRemember: [...activeTiles]};
+    }
+    case MAKE_TILE_ACTIVE: {
+      const activeTiles = [...state.activeTiles, action.index];
+      console.log('sjgfsbkhbfygf')
+      return {...state, activeTiles};
     }
     case REMOVE_ACTIVE_TILES: {
-      return {...state, activeTiles: []}
+      return {...state, activeTiles: []};
     }
     default: 
       return state;

@@ -13,7 +13,9 @@ const Tile = styled.li`
   };
 
   &:hover {
-    background-color: #e9ece5;
+    background-color: ${props => 
+      props.isActive === true ? '#3fb0ac' : '#e9ece5'
+    };
   }
 `
 export default Tile;

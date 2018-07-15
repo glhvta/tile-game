@@ -1,6 +1,7 @@
 import { 
   GAME_START, CREATE_ACTIVE_TILES, REMOVE_ACTIVE_TILES, 
-  TILE_PRESSED, NEXT_LEVEL, PREVIOUS_LEVEL, UPDATE_TILES
+  TILE_PRESSED, NEXT_LEVEL, PREVIOUS_LEVEL, UPDATE_TILES,
+  MAKE_TILE_ACTIVE
  } from '../actionTypes';
 
 //todo: make actions creator
@@ -19,12 +20,13 @@ export const pressTileAction = index => {
 };
 
 export const activeTilesAction = payload => {
-  console.log(payload)
   return {
     type: CREATE_ACTIVE_TILES,
     payload
   }
 }
+
+export const makeActiveOnPress = index => ({type: MAKE_TILE_ACTIVE, index})
 
 export const nonActiveTilesAction = payload => {
   return {

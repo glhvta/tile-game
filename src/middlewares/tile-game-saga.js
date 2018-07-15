@@ -1,9 +1,12 @@
-import { all, take, put, call, select, takeEvery, race } from 'redux-saga/effects';
+import { all, take, put, call, select, race } from 'redux-saga/effects';
 import { delay } from 'redux-saga';
 
 import { GAME_START, TILE_PRESSED } from '../actionTypes';
-import { activeTilesAction, nonActiveTilesAction, nextLevel, prevLevel, updateTilesAction } from '../actions';
 import { tilesToRememberSelector, levelSelector, tilesSelector } from '../selectors/tile-game';
+import { 
+  activeTilesAction, nonActiveTilesAction, nextLevel, prevLevel, updateTilesAction, makeActiveOnPress
+} from '../actions';
+
 
 export function* watchGameStart() {
   while(true) {
@@ -45,7 +48,8 @@ function* checkTheAnswer() {
 
   for( i; i < tilesToRemember.length; i++) {
     const { index } = yield take(TILE_PRESSED);
-    
+    yield put(makeActiveOnPress(index));
+
     if(!tilesToRemember.includes(index)) {
       break;
     }

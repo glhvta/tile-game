@@ -14,7 +14,7 @@ class TilesBox extends React.Component {
     const { startGame, tilePressed } = this.props;
     
     return (
-      <TilesBoxWrapper onClick={() => startGame(tiles.length, level)}>
+      <TilesBoxWrapper onClick={() => startGame(tiles.length, level)} level={level}>
         <ul>
           {tiles.map((item, i) => {
             return (
