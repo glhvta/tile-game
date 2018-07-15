@@ -1,11 +1,10 @@
 import React, { Component } from 'react'
+import TilesBox from './TilesBox/TilesBox';
 
 class App extends Component {
   render() {
     return (
-      <div className="App">
-        Hellooooo
-      </div>
+      <TilesBox />
     );
   }
 }

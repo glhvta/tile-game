@@ -1,7 +1,9 @@
-import { combineReducers } from 'redux'
+import { combineReducers } from 'redux';
 
-import start from './start'
+import tiles from './tiles';
+import level from './level';
 
 export default combineReducers({
-  start
+  level,
+  tiles
 });
