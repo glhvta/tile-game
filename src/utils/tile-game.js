@@ -1,9 +1,7 @@
 import { isNumber } from './validation'
 
 export const getTiles = level => {
-  if (!isNumber(level)) {
-    throw new Error('Level should be a number');
-  }
+  throwIfNotANumber(level);
   let a = 3, b = 3;
 
   for (let i = 1; i < level; i++) {
@@ -13,9 +11,7 @@ export const getTiles = level => {
 };
 
 export const getTilesBoxWidth = (tileWidth, level) => {
-  if (!isNumber(tileWidth, level)) {
-    throw new Error('Arguments should be numbers');
-  }
+  throwIfNotANumber(tileWidth, level);
   let numberOfTilesInLine = 3;
 
   for (let i = 1; i < level; i++) {
@@ -25,4 +21,22 @@ export const getTilesBoxWidth = (tileWidth, level) => {
   }
 
   return numberOfTilesInLine * tileWidth;
+}
+
+export const getActiveTiles = (tilesNumber, level) => {
+  const activeTiles = new Set();
+  const activeTilesNumber = level + 2;
+
+  while (activeTiles.size !== activeTilesNumber) {
+    const activeIndex = Math.floor(Math.random() * tilesNumber);
+    activeTiles.add(activeIndex);
+  }
+
+  return Array.from(activeTiles);
+}
+
+function throwIfNotANumber(...args) {
+  if (!isNumber(...args)) {
+    throw new Error('Arguments should be numbers');
+  }
 }

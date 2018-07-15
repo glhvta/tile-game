@@ -1,11 +1,13 @@
 import { UPDATE_TILES } from '../actionTypes';
-
 import { getTiles } from '../utils/tile-game';
 
-const tiles = (state = [], action) => {
+const initialState = new Array(9).fill('*');
+
+const tiles = (state = initialState, action) => {
   switch (action.type) {
     case UPDATE_TILES: {
-      return getTiles(action.payload);
+      const tilesNumber =  getTiles(action.payload);
+      return new Array(tilesNumber).fill('*');
     }
     default: 
       return state;

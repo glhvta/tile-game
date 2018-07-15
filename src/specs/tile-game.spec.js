@@ -1,7 +1,4 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
-
-import { getTiles, getTilesBoxWidth } from '../utils/tile-game'
+import { getTiles, getTilesBoxWidth, getActiveTiles } from '../utils/tile-game'
 
 describe('Tiles-Game-Utils', function () {
   describe('#getTiles', function () {
@@ -49,5 +46,37 @@ describe('Tiles-Game-Utils', function () {
     it('should return 315px for the 5 level', () => {
       expect(getTilesBoxWidth(63, 5)).toEqual(315);
     });
+  });
+
+  describe('#getActiveTiles', function () {
+
+    it('should return 3 active tiles for the first level', () => {
+      expect(getActiveTiles(9, 1)).toHaveLength(3);
+    });
+
+    it('should return 5 active tiles for the third level', () => {
+      expect(getActiveTiles(25, 3)).toHaveLength(5);
+    });
+
+    it('should return array as the result', () => {
+      const activeTiles = getActiveTiles(25, 3);
+      expect(Array.isArray(activeTiles)).toBeTruthy();
+    });
+
+    it('should return indexes with active tiles in proper range', () => {
+      const activeTiles = getActiveTiles(25, 3);
+
+      activeTiles.forEach(tile => {
+        expect(tile).toBeLessThan(25);
+      });
+    });
+
+    it('should not contain the same values', () => {
+      const activeTiles = getActiveTiles(25, 3);
+      const setTiles = new Set(activeTiles);
+
+      expect(activeTiles.length).toEqual(setTiles.size);
+    });
+
   });
 });

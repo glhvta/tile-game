@@ -1,15 +1,24 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 
+import Tile from './Tile';
 import TilesBoxWrapper from './TilesBoxWrapper';
-const arr = [1,2,3,4,5,6,7,8,9]
+import { getActiveTiles } from '../../utils/tile-game';
+import  { tilesSelector, levelSelector } from '../../selectors/tile-game';
+
 class TilesBox extends React.Component {
   render() {
+    const { tiles, level } = this.props;
+    const activeTiles = getActiveTiles(tiles.length, level);
+
     return (
       <TilesBoxWrapper>
         <ul>
-          {arr.map((item, i) => (
-            <li key={i}></li>
+          {tiles.map((item, i) => ( 
+            <Tile key={i} 
+              isActive={activeTiles.includes(i)}
+            />
           ))}
         </ul>
       </TilesBoxWrapper>
@@ -17,4 +26,15 @@ class TilesBox extends React.Component {
   }
 }
 
-export default TilesBox;
+TilesBox.propTypes = {
+  tiles: PropTypes.array
+}
+
+const mapStateToProps = state => {
+  return {
+    level: levelSelector(state),
+    tiles: tilesSelector(state)
+  }
+}
+
+export default connect(mapStateToProps, null)(TilesBox);
