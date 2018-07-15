@@ -13,7 +13,7 @@ export const getTiles = level => {
 export const getTilesBoxWidth = (tileWidth, level) => {
   throwIfNotANumber(tileWidth, level);
   let numberOfTilesInLine = 3;
-
+  
   for (let i = 1; i < level; i++) {
     if (i % 2 === 0) {
       numberOfTilesInLine++;

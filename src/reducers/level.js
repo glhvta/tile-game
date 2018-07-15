@@ -6,7 +6,8 @@ const start = (state = 1, action) => {
       return state + 1;
     }
     case PREVIOUS_LEVEL: {
-      return state - 1;
+      const newLevel = state - 1;
+      return newLevel >= 1 ? newLevel : 1; 
     }
     default: 
       return state;

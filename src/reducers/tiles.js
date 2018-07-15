@@ -10,15 +10,14 @@ const initialState = {
 const tiles = (state = initialState, action) => {
   switch (action.type) {
     case UPDATE_TILES: {
-      const level = action.payload;
-      const tilesNumber =  getTiles(level);
+      const tilesNumber =  getTiles(action.level);
       const allTiles = new Array(tilesNumber).fill('*');
 
       return {...state, allTiles};
     }
     case CREATE_ACTIVE_TILES: {
-      const { length, level } = action.payload;
-      const activeTiles = createActiveTiles(length, level);
+      const { tilesNumber, level } = action.payload;
+      const activeTiles = createActiveTiles(tilesNumber, level);
 
       return {...state, activeTiles, tilesToRemember: [...activeTiles]}
     }
