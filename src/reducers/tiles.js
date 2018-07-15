@@ -1,6 +1,6 @@
 import { UPDATE_TILES } from '../actionTypes';
 
-import getTiles from '../utils/getTiles';
+import { getTiles } from '../utils/tile-game';
 
 const tiles = (state = [], action) => {
   switch (action.type) {

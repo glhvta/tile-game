@@ -1,10 +1,10 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 
-import getTiles from '../utils/getTiles'
+import { getTiles, getTilesBoxWidth } from '../utils/tile-game'
 
 describe('Tiles-Game-Utils', function () {
-  describe('#get tiles', function () {
+  describe('#getTiles', function () {
 
     it('should throw an error if not a number was passed', () => {
       expect(getTiles).toThrow();
@@ -30,5 +30,24 @@ describe('Tiles-Game-Utils', function () {
       expect(getTiles(9)).toEqual(49);
     });
 
+  });
+
+  describe('#getTilesBoxWidth', function () {
+
+    it('should throw an error if not a number was passed', () => {
+      expect(getTilesBoxWidth).toThrow();
+    });
+
+    it('should return 189px tiles for the first level', () => {
+      expect(getTilesBoxWidth(63, 1)).toEqual(189);
+    });
+
+    it('should return 252px for the 3 level', () => {
+      expect(getTilesBoxWidth(63, 3)).toEqual(252);
+    });
+
+    it('should return 315px for the 5 level', () => {
+      expect(getTilesBoxWidth(63, 5)).toEqual(315);
+    });
   });
 });

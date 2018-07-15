@@ -1,4 +1,8 @@
 import styled from 'styled-components';
+import { getTilesBoxWidth } from '../../utils/tile-game';
+
+const tileSize = 55, tileHorizontalMargin = 4;
+const fullTileWidth = tileSize + (tileHorizontalMargin * 2);
 
 export default styled.div`
   display: flex;
@@ -13,15 +17,15 @@ export default styled.div`
   ul {
     display: flex;
     flex-flow: row wrap;
-    width: 380px;
+    width: ${getTilesBoxWidth(fullTileWidth, 1)}px;
     padding: 10px;
     background-color: #3b3a36;
   }
 
   ul li {
     list-style: none;
-    width: 55px;
-    height: 55px;
+    width: ${tileSize}px;
+    height: ${tileSize}px;
     margin: 5px 4px;
     background-color: #b3c2bf;
     cursor: pointer;
