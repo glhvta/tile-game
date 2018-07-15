@@ -4,23 +4,25 @@ import { connect } from 'react-redux';
 
 import Tile from './Tile';
 import TilesBoxWrapper from './TilesBoxWrapper';
-import { startGame } from '../../actions'
+import { startGame, pressTileAction } from '../../actions'
 import  { tilesSelector, levelSelector, activeTilesSelector } from '../../selectors/tile-game';
 import { UPDATE_TILES } from '../../actionTypes';
 
 class TilesBox extends React.Component {
   render() {
     const { tiles, activeTiles, level } = this.props;
-    const { startGame } = this.props;
+    const { startGame, tilePressed } = this.props;
     
     return (
       <TilesBoxWrapper onClick={() => startGame(tiles.length, level)}>
         <ul>
           {tiles.map((item, i) => {
-            console.log(activeTiles)
-            return <Tile key={i} 
-              isActive={activeTiles.includes(i)}
-            />
+            return (
+              <Tile key={i} 
+                onClick={() => tilePressed(i)}
+                isActive={activeTiles.includes(i)}
+              />
+            )
           })}
         </ul>
       </TilesBoxWrapper>
@@ -42,7 +44,8 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
   return {
-    startGame: (length, level) => dispatch(startGame({length, level}))
+    startGame: (length, level) => dispatch(startGame({length, level})),
+    tilePressed: index => dispatch(pressTileAction(index))
   }
 }
 

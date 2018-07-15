@@ -2,5 +2,7 @@ export const NEXT_LEVEL = 'NEXT_LEVEL';
 export const PREVIOUS_LEVEL = 'PREVIOUS_LEVEL';
 export const UPDATE_TILES = 'UPDATE_TILES';
 export const CREATE_ACTIVE_TILES = 'CREATE_ACTIVE_TILES';
+export const REMOVE_ACTIVE_TILES = 'REMOVE_ACTIVE_TILES';
 export const GAME_START = 'GAME_START';
+export const TILE_PRESSED = 'TILE_PRESSED';
 
