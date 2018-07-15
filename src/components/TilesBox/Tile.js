@@ -9,7 +9,7 @@ const Tile = styled.li`
   cursor: pointer;
 
   background-color: ${props => 
-    props.isActive === 'true' ? '#c0dfd9' : '#b3c2bf'
+    props.isActive === true ? '#3fb0ac' : '#b3c2bf'
   };
 
   &:hover {
@@ -17,3 +17,4 @@ const Tile = styled.li`
   }
 `
 export default Tile;
+

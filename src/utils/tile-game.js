@@ -23,7 +23,9 @@ export const getTilesBoxWidth = (tileWidth, level) => {
   return numberOfTilesInLine * tileWidth;
 }
 
-export const getActiveTiles = (tilesNumber, level) => {
+export const createActiveTiles = (tilesNumber, level) => {
+  throwIfNotANumber(tilesNumber, level);
+  
   const activeTiles = new Set();
   const activeTilesNumber = level + 2;
 
@@ -34,6 +36,8 @@ export const getActiveTiles = (tilesNumber, level) => {
 
   return Array.from(activeTiles);
 }
+
+
 
 function throwIfNotANumber(...args) {
   if (!isNumber(...args)) {

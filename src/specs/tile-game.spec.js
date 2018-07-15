@@ -1,4 +1,4 @@
-import { getTiles, getTilesBoxWidth, getActiveTiles } from '../utils/tile-game'
+import { getTiles, getTilesBoxWidth, createActiveTiles } from '../utils/tile-game'
 
 describe('Tiles-Game-Utils', function () {
   describe('#getTiles', function () {
@@ -48,23 +48,23 @@ describe('Tiles-Game-Utils', function () {
     });
   });
 
-  describe('#getActiveTiles', function () {
+  describe('#createActiveTiles', function () {
 
     it('should return 3 active tiles for the first level', () => {
-      expect(getActiveTiles(9, 1)).toHaveLength(3);
+      expect(createActiveTiles(9, 1)).toHaveLength(3);
     });
 
     it('should return 5 active tiles for the third level', () => {
-      expect(getActiveTiles(25, 3)).toHaveLength(5);
+      expect(createActiveTiles(25, 3)).toHaveLength(5);
     });
 
     it('should return array as the result', () => {
-      const activeTiles = getActiveTiles(25, 3);
+      const activeTiles = createActiveTiles(25, 3);
       expect(Array.isArray(activeTiles)).toBeTruthy();
     });
 
     it('should return indexes with active tiles in proper range', () => {
-      const activeTiles = getActiveTiles(25, 3);
+      const activeTiles = createActiveTiles(25, 3);
 
       activeTiles.forEach(tile => {
         expect(tile).toBeLessThan(25);
@@ -72,7 +72,7 @@ describe('Tiles-Game-Utils', function () {
     });
 
     it('should not contain the same values', () => {
-      const activeTiles = getActiveTiles(25, 3);
+      const activeTiles = createActiveTiles(25, 3);
       const setTiles = new Set(activeTiles);
 
       expect(activeTiles.length).toEqual(setTiles.size);

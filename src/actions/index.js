@@ -1,8 +1,16 @@
-import { START_ACTION } from "../actionTypes";
+import { GAME_START, CREATE_ACTIVE_TILES } from '../actionTypes';
 
-export const start = payload => {
+export const startGame = payload => {
   return {
-    type: START_ACTION,
+    type: GAME_START,
     payload
   }
 };
+
+export const activeTilesAction = payload => {
+  return {
+    type: CREATE_ACTIVE_TILES,
+    payload
+  }
+}
+ 
