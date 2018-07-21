@@ -23,7 +23,7 @@ const tiles = (state = initialState, action) => {
     }
     case MAKE_TILE_ACTIVE: {
       const activeTiles = [...state.activeTiles, action.index];
-      console.log('sjgfsbkhbfygf')
+      
       return {...state, activeTiles};
     }
     case REMOVE_ACTIVE_TILES: {

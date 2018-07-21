@@ -1,6 +1,6 @@
 import { NEXT_LEVEL, PREVIOUS_LEVEL } from '../actionTypes';
 
-const start = (state = 1, action) => {
+const level = (state = 1, action) => {
   switch (action.type) {
     case NEXT_LEVEL: {
       return state + 1;
@@ -14,4 +14,4 @@ const start = (state = 1, action) => {
   }
 }
 
-export default start;
+export default level;

@@ -4,6 +4,7 @@ import { getTilesBoxWidth } from '../../utils/tile-game';
 import { fullTileWidth } from '../../constants/tile-game';
 
 export default styled.div`
+  position: relative;
   display: flex;
   justify-content: center;
   align-items: center;

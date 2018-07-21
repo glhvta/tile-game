@@ -6,3 +6,5 @@ export const tilesToRememberSelector = state => state.tiles.tilesToRemember;
 
 export const levelSelector = state => state.level;
 
+export const timeLineSelector = state => state.timeLine;
+

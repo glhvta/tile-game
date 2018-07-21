@@ -5,7 +5,7 @@ import {
  } from '../actionTypes';
 
 //todo: make actions creator
-export const startGame = payload => {
+export const startGameAction = payload => {
   return {
     type: GAME_START,
     payload

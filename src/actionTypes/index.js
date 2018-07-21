@@ -4,6 +4,8 @@ export const UPDATE_TILES = 'UPDATE_TILES';
 export const CREATE_ACTIVE_TILES = 'CREATE_ACTIVE_TILES';
 export const REMOVE_ACTIVE_TILES = 'REMOVE_ACTIVE_TILES';
 export const GAME_START = 'GAME_START';
+export const GAME_IN_PROCESS = 'GAME_IN_PROCESS';
+export const GAME_END = 'GAME_END';
 export const TILE_PRESSED = 'TILE_PRESSED';
 export const MAKE_TILE_ACTIVE = 'MAKE_TILE_ACTIVE';
 

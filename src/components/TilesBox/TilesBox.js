@@ -4,17 +4,21 @@ import { connect } from 'react-redux';
 
 import Tile from './Tile';
 import TilesBoxWrapper from './TilesBoxWrapper';
-import { startGame, pressTileAction } from '../../actions'
-import { tilesSelector, levelSelector, activeTilesSelector } from '../../selectors/tile-game';
+import StartFrame from './StartFrame';
+import { startGameAction, pressTileAction } from '../../actions'
+import { tilesSelector, levelSelector, activeTilesSelector, timeLineSelector } from '../../selectors';
+import { GAME_START } from '../../actionTypes';
 
 
 class TilesBox extends React.Component {
+
   render() {
-    const { tiles, activeTiles, level } = this.props;
+    const { timeLine, tiles, activeTiles, level } = this.props;
     const { startGame, tilePressed } = this.props;
-    
+    console.log(timeLine)
     return (
-      <TilesBoxWrapper onClick={() => startGame(tiles.length, level)} level={level}>
+      <TilesBoxWrapper onClick={startGame} level={level}>
+        {timeLine === GAME_START && <StartFrame startGame={startGame}/>}
         <ul>
           {tiles.map((item, i) => {
             return (
@@ -35,16 +39,18 @@ TilesBox.propTypes = {
 }
 
 const mapStateToProps = state => {
+  console.log(state)
   return {
     level: levelSelector(state),
     tiles: tilesSelector(state),
-    activeTiles: activeTilesSelector(state)
+    activeTiles: activeTilesSelector(state),
+    timeLine: timeLineSelector(state)
   }
 }
 
 const mapDispatchToProps = dispatch => {
   return {
-    startGame: (tilesNumber, level) => dispatch(startGame({tilesNumber, level})),
+    startGame: () => dispatch(startGameAction()),
     tilePressed: index => dispatch(pressTileAction(index))
   }
 }

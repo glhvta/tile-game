@@ -1,0 +1,16 @@
+import { GAME_START, GAME_IN_PROCESS, GAME_END } from '../actionTypes';
+
+const timeLine = (state = GAME_START, action) => {
+  switch (action.type) {
+    case GAME_START: {
+      return GAME_IN_PROCESS;
+    }
+    case GAME_END: {
+      return GAME_IN_PROCESS; 
+    }
+    default: 
+      return state;
+  }
+}
+
+export default timeLine;

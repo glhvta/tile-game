@@ -1,7 +1,7 @@
 import { take, put, call, select } from 'redux-saga/effects';
 import { delay } from 'redux-saga';
 import { TILE_PRESSED } from '../actionTypes';
-import { tilesToRememberSelector, levelSelector } from '../selectors/tile-game';
+import { tilesToRememberSelector, levelSelector } from '../selectors';
 import { activeTilesAction, nonActiveTilesAction, nextLevel, prevLevel, updateTilesAction, makeActiveOnPress} from '../actions';
 
 export function* showLevelTask(levelInfo) {
