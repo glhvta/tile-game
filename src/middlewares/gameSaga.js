@@ -1,6 +1,6 @@
-import { all, take, call, select, race, put } from 'redux-saga/effects';
+import { all, take, call, select, race, put, fork } from 'redux-saga/effects';
 import { delay } from 'redux-saga';
-import { GAME_START } from '../actionTypes';
+import { GAME_START, GAME_END } from '../actionTypes';
 import { levelSelector, tilesSelector } from '../selectors';
 import { showLevelTask, checkTheAnswer, changeLevel } from './gameWorkerSaga';
 import { startGameAction } from '../actions';
@@ -9,15 +9,16 @@ export function* watchGameStart() {
   while(true) {
     yield take(GAME_START);
     yield put(startGameAction());
-    yield startGame();
+    yield fork(startGame);
   } 
 };
 
 function* startGame() {
   yield race(
-    yield gameTask(),
-    yield call(delay, 10000)
+    yield fork(gameTask),
+    yield call(delay, 2000)
   );
+  yield put({type: GAME_END})
 };
 
 function* gameTask() {
