@@ -2,24 +2,48 @@ import React from 'react';
 import styled from 'styled-components';
 import { GAME_IN_PROCESS } from '../../actionTypes';
 
-const ModalFrame = ({ level, timeLine, className }) => {
-  return timeLine === GAME_IN_PROCESS && (
-    <section className={className}>
-      <div>Level: {level}</div>
-      <div>time</div>
-    </section> 
-  )
+class ModalFrame extends React.Component {
+  constructor() {
+    super()
+    this.state = {
+      secondsLeft: 60,
+    }
+
+    this.startTimer();
+  }
+
+  startTimer = () => {
+    const id = setInterval(() => {
+      this.setState(prevState => prevState.secondsLeft -= 1)
+      if(this.state.secondsLeft === 0) { 
+        clearInterval(id);
+      }
+    }, 1000)
+  }
+
+  render() {
+    const { level } = this.props;
+
+    return (
+      <ModalFrameWrapper>
+        <div>Level: {level}</div>
+        <div>time: {this.state.secondsLeft}</div>
+      </ModalFrameWrapper> 
+    )
+  }
 }
 
-export default styled(ModalFrame)`
+const ModalFrameWrapper = styled.section`
   display: flex;
   justify-content: space-between;
   position: absolute;
   padding: 20px;
   width: 100%;
   top: 0;
-  background-color: #b3c2bff0;
   box-sizing: border-box;
-  color: #e9ece5;
-    font-size: 1.5rem;
-`
+  color: #3b3a36;
+  font-size: 1.5rem;
+  text-transform: capitalize;
+`;
+
+export default ModalFrame;

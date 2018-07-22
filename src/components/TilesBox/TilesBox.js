@@ -7,6 +7,7 @@ import GameProgress from './GameProgress'
 import ModalFrame from './ModalFrame';
 import LevelChangeModal from './LevelChangeModal';
 import TilesBoxWrapper from './TilesBoxWrapper';
+import { GAME_IN_PROCESS } from '../../actionTypes';
 import { startGameAction, pressTileAction } from '../../actions'
 import { tilesSelector, levelSelector, activeTilesSelector, timeLineSelector } from '../../selectors';
 
@@ -17,7 +18,8 @@ class TilesBox extends React.Component {
 
     return (
       <TilesBoxWrapper onClick={startGame} level={level}>
-        <GameProgress level={level} timeLine={timeLine}/>
+        {timeLine === GAME_IN_PROCESS && //or maybe make timer work from redux?
+          <GameProgress level={level} timeLine={timeLine}/>}
         <ModalFrame timeLine= {timeLine} startGame={startGame}/>
         {/* <LevelChangeModal level={level} /> */}
         <ul>
