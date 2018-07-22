@@ -4,8 +4,8 @@ import { TILE_PRESSED } from '../actionTypes';
 import { tilesToRememberSelector, levelSelector } from '../selectors';
 import { activeTilesAction, nonActiveTilesAction, nextLevel, prevLevel, updateTilesAction, makeActiveOnPress} from '../actions';
 
-export function* showLevelTask(levelInfo) {
-  yield put(activeTilesAction(levelInfo));
+export function* showLevelTask(level) {
+  yield put(activeTilesAction(level));
   yield call(delay, 2000); //why is waiting one second more???!
   yield put(nonActiveTilesAction());
 };

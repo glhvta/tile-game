@@ -16,8 +16,8 @@ const tiles = (state = initialState, action) => {
       return {...state, allTiles};
     }
     case CREATE_ACTIVE_TILES: {
-      const { tilesNumber, level } = action.payload;
-      const activeTiles = createActiveTiles(tilesNumber, level);
+      const tilesNumber = state.allTiles.length;  
+      const activeTiles = createActiveTiles(tilesNumber, action.level);
 
       return {...state, activeTiles, tilesToRemember: [...activeTiles]};
     }

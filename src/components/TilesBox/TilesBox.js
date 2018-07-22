@@ -17,7 +17,7 @@ class TilesBox extends React.Component {
     const { startGame, tilePressed } = this.props;
 
     return (
-      <TilesBoxWrapper onClick={startGame} level={level}>
+      <TilesBoxWrapper level={level}>
         {timeLine === GAME_IN_PROCESS && //or maybe make timer work from redux?
           <GameProgress level={level} timeLine={timeLine}/>}
         <ModalFrame timeLine= {timeLine} startGame={startGame}/>

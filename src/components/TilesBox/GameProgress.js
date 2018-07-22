@@ -6,7 +6,7 @@ class ModalFrame extends React.Component {
   constructor() {
     super()
     this.state = {
-      secondsLeft: 60,
+      secondsLeft: 30,
     }
 
     this.startTimer();

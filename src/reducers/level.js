@@ -1,4 +1,4 @@
-import { NEXT_LEVEL, PREVIOUS_LEVEL } from '../actionTypes';
+import { NEXT_LEVEL, PREVIOUS_LEVEL, SET_FIRST_LEVEL } from '../actionTypes';
 
 const level = (state = 1, action) => {
   switch (action.type) {
@@ -8,6 +8,9 @@ const level = (state = 1, action) => {
     case PREVIOUS_LEVEL: {
       const newLevel = state - 1;
       return newLevel >= 1 ? newLevel : 1; 
+    }
+    case SET_FIRST_LEVEL: {
+      return 1;
     }
     default: 
       return state;
