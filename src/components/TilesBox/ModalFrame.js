@@ -1,15 +1,16 @@
 import React from 'react';
 import styled from 'styled-components';
+import { GAME_IN_PROCESS } from '../../actionTypes';
 
-const StartFrame = ({ startGame, className }) => {
-  return (
+const ModalFrame = ({ timeLine, startGame, className }) => {
+  return timeLine !== GAME_IN_PROCESS && (
     <section className={className}>
       <button onClick={startGame}>press to Start</button>
     </section> 
   )
 }
 
-export default styled(StartFrame)`
+export default styled(ModalFrame)`
   display: flex;
   align-items: center;
   position: absolute;

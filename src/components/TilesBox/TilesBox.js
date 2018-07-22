@@ -3,22 +3,23 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 
 import Tile from './Tile';
+import GameProgress from './GameProgress'
+import ModalFrame from './ModalFrame';
+import LevelChangeModal from './LevelChangeModal';
 import TilesBoxWrapper from './TilesBoxWrapper';
-import StartFrame from './StartFrame';
 import { startGameAction, pressTileAction } from '../../actions'
 import { tilesSelector, levelSelector, activeTilesSelector, timeLineSelector } from '../../selectors';
-import { GAME_START } from '../../actionTypes';
-
 
 class TilesBox extends React.Component {
-
   render() {
     const { timeLine, tiles, activeTiles, level } = this.props;
     const { startGame, tilePressed } = this.props;
-    console.log(timeLine)
+
     return (
       <TilesBoxWrapper onClick={startGame} level={level}>
-        {timeLine === GAME_START && <StartFrame startGame={startGame}/>}
+        <GameProgress level={level} timeLine={timeLine}/>
+        <ModalFrame timeLine= {timeLine} startGame={startGame}/>
+        {/* <LevelChangeModal level={level} /> */}
         <ul>
           {tiles.map((item, i) => {
             return (
