@@ -12,7 +12,7 @@ export function* watchGameStart() {
 function* startGame() {
   yield race(
     yield fork(gameTask),
-    yield call(delay, 30000)
+    yield call(delay, 60000)
   );
 
   yield put(endGameAction());

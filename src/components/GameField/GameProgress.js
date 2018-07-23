@@ -3,13 +3,16 @@ import styled from 'styled-components';
 import { GAME_IN_PROCESS } from '../../actionTypes';
 
 class ModalFrame extends React.Component {
-  constructor() {
-    super()
-    this.state = {
-      secondsLeft: 30,
-    }
+  state = {
+    secondsLeft: 60,
+  }
 
-    this.startTimer();
+  componentDidMount() {
+    this.timerId = this.startTimer(); 
+  }
+
+  componentWillUnmount() {
+    clearInterval(this.timerId);
   }
 
   startTimer = () => {
@@ -18,13 +21,14 @@ class ModalFrame extends React.Component {
       if(this.state.secondsLeft === 0) { 
         clearInterval(id);
       }
-    }, 1000)
+    }, 1000);
+    return id;
   }
 
   render() {
-    const { level } = this.props;
+    const { level, timeLine } = this.props;
 
-    return (
+    return timeLine === GAME_IN_PROCESS && (
       <ModalFrameWrapper>
         <div>Level: {level}</div>
         <div>time: {this.state.secondsLeft}</div>

@@ -6,7 +6,6 @@ import GameControlModal from '../ModalFrames/GameControlModal';
 import LevelChangeModal from '../ModalFrames/LevelChangeModal';
 import GameFieldWrapper from './GameFieldWrapper';
 import TilesBox from '../TilesBox/TilesBox';
-import { GAME_IN_PROCESS } from '../../actionTypes';
 import { startGameAction, pressTileAction } from '../../actions';
 import { tilesSelector, levelSelector, activeTilesSelector, timeLineSelector } from '../../selectors';
 
@@ -17,7 +16,7 @@ class GameField extends React.Component {
 
     return (
       <GameFieldWrapper>
-        {timeLine === GAME_IN_PROCESS && <GameProgress level={level} timeLine={timeLine}/>}
+        <GameProgress level={level} timeLine={timeLine}/>
         <GameControlModal timeLine= {timeLine} startGame={startGame}/>
         {/* <LevelChangeModal level={level} /> */}
         <TilesBox
