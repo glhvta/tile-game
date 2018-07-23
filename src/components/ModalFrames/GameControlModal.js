@@ -2,15 +2,15 @@ import React from 'react';
 import styled from 'styled-components';
 import { GAME_IN_PROCESS } from '../../actionTypes';
 
-const ModalFrame = ({ timeLine, startGame, className }) => {
+const GameControlModal = ({ timeLine, startGame, className }) => {
   return timeLine !== GAME_IN_PROCESS && (
     <section className={className}>
       <button onClick={startGame}>press to Start</button>
     </section> 
   )
-}
+};
 
-export default styled(ModalFrame)`
+export default styled(GameControlModal)`
   display: flex;
   align-items: center;
   position: absolute;
@@ -28,4 +28,4 @@ export default styled(ModalFrame)`
     border: none;
     cursor: pointer;
   }
-`
+`;

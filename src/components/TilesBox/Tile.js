@@ -17,6 +17,6 @@ const Tile = styled.li`
       props.isActive === true ? '#3fb0ac' : '#e9ece5'
     };
   }
-`
-export default Tile;
+`;
 
+export default Tile;

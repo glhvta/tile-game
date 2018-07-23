@@ -1,10 +1,10 @@
 import React, { Component } from 'react'
-import TilesBox from './TilesBox/TilesBox';
+import GameField from './GameField/GameField';
 
 class App extends Component {
   render() {
     return (
-      <TilesBox />
+      <GameField />
     );
   }
 }

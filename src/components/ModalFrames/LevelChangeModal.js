@@ -32,4 +32,4 @@ export default styled(LevelChangeModal)`
   background-color: #27d564f0;
   font-size: 4.5rem;
   color: #e9ece5;
-`
+`;
