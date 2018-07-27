@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 
-class LevelChangeModal extends React.Component {
+class LevelChange extends React.Component {
   state = {
     isVisible: false,
     prevLevel: 0
@@ -21,7 +21,7 @@ class LevelChangeModal extends React.Component {
   }
 }
 
-export default styled(LevelChangeModal)`
+export default styled(LevelChange)`
   position: absolute;
   display: flex;
   align-items:center;

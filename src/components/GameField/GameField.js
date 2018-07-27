@@ -1,13 +1,10 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { connect } from 'react-redux';
 import GameProgress from './GameProgress';
-import GameControlModal from '../ModalFrames/GameControlModal';
-import LevelChangeModal from '../ModalFrames/LevelChangeModal';
+import GameControl from '../ModalFrames/GameControl';
+import LevelChange from '../ModalFrames/LevelChange';
 import GameFieldWrapper from './GameFieldWrapper';
 import TilesBox from '../TilesBox/TilesBox';
-import { startGameAction, pressTileAction } from '../../actions';
-import { tilesSelector, levelSelector, activeTilesSelector, timeLineSelector } from '../../selectors';
 
 class GameField extends React.Component {
   render() {
@@ -17,8 +14,8 @@ class GameField extends React.Component {
     return (
       <GameFieldWrapper>
         <GameProgress level={level} timeLine={timeLine}/>
-        <GameControlModal timeLine= {timeLine} startGame={startGame}/>
-        {/* <LevelChangeModal level={level} /> */}
+        <GameControl timeLine= {timeLine} startGame={startGame}/>
+        <LevelChange level={level} />
         <TilesBox
           level={level} 
           tiles={tiles}
@@ -37,23 +34,6 @@ GameField.propTypes = {
   level: PropTypes.number,
   startGame: PropTypes.func,
   makeTilePressed: PropTypes.func
-}
+};
 
-const mapStateToProps = state => {
-  console.log(state)
-  return {
-    level: levelSelector(state),
-    tiles: tilesSelector(state),
-    activeTiles: activeTilesSelector(state),
-    timeLine: timeLineSelector(state)
-  }
-}
-
-const mapDispatchToProps = dispatch => {
-  return {
-    startGame: () => dispatch(startGameAction()),
-    makeTilePressed: index => dispatch(pressTileAction(index))
-  }
-}
-
-export default connect(mapStateToProps, mapDispatchToProps)(GameField);
+export default GameField;

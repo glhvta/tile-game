@@ -2,7 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 import { GAME_IN_PROCESS } from '../../actionTypes';
 
-const GameControlModal = ({ timeLine, startGame, className }) => {
+const GameControl = ({ timeLine, startGame, className }) => {
   return timeLine !== GAME_IN_PROCESS && (
     <section className={className}>
       <button onClick={startGame}>press to Start</button>
@@ -10,7 +10,7 @@ const GameControlModal = ({ timeLine, startGame, className }) => {
   )
 };
 
-export default styled(GameControlModal)`
+export default styled(GameControl)`
   display: flex;
   align-items: center;
   position: absolute;
