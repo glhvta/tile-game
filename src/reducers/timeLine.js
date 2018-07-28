@@ -6,7 +6,6 @@ const timeLine = (state = GAME_START, action) => {
       return GAME_IN_PROCESS;
     }
     case GAME_END: {
-      console.log('sfdsfd')
       return GAME_END; 
     }
     default: 

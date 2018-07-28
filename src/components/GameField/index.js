@@ -4,7 +4,6 @@ import { startGameAction, pressTileAction } from '../../actions';
 import { tilesSelector, levelSelector, activeTilesSelector, timeLineSelector } from '../../selectors';
 
 const mapStateToProps = state => {
-  console.log(state)
   return {
     level: levelSelector(state),
     tiles: tilesSelector(state),
