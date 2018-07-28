@@ -19,6 +19,7 @@ class GameField extends React.Component {
         <TilesBox
           level={level} 
           tiles={tiles}
+          levelChange={levelChange}
           activeTiles={activeTiles}
           makeTilePressed={makeTilePressed}
         />

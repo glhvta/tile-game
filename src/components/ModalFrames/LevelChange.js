@@ -34,10 +34,11 @@ const LevelChangeWrapper = styled.div`
   height: 150px;
   border-radius: 50%;
   background-color: ${props => 
-    props.isAnswerCorrect ? '#27d564f0' : 'red'};
+    props.isAnswerCorrect ? '#27d564' : '#f01111'};
 
   font-size: 6rem;
   color: #e9ece5;
+  z-index: 5;
 `;
 
 export default LevelChange;

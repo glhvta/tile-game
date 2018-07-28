@@ -1,11 +1,10 @@
 import { take, put, call, select } from 'redux-saga/effects';
 import { delay } from 'redux-saga';
 import { TILE_PRESSED } from '../actionTypes';
-import { tilesToRememberSelector } from '../selectors';
+import { tilesToRememberSelector, levelSelector } from '../selectors';
 import { activeTilesAction, nonActiveTilesAction, nextLevel, prevLevel, updateTilesAction, makeActiveOnPress, showlevelChangeModal, hideLevelChangeModal} from '../actions';
 
 export function* showLevelTask(level) {
-  yield put(updateTilesAction(level));
   yield put(activeTilesAction(level));
   yield call(delay, 2000); //why is waiting one second more???!
   yield put(nonActiveTilesAction());
@@ -34,6 +33,8 @@ export function* changeLevel(isLevelPassed) {
     yield put.resolve(prevLevel());
   }
 
+  const level = yield select(levelSelector);
+  yield put(updateTilesAction(level));
   yield call(showlevelChangeNotification);
 }
 
