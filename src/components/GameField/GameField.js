@@ -8,14 +8,14 @@ import TilesBox from '../TilesBox/TilesBox';
 
 class GameField extends React.Component {
   render() {
-    const { timeLine, tiles, activeTiles, level } = this.props;
+    const { timeLine, tiles, activeTiles, level, levelChange } = this.props;
     const { startGame, makeTilePressed } = this.props;
 
     return (
       <GameFieldWrapper>
-        <GameProgress level={level} timeLine={timeLine}/>
-        <GameControl timeLine= {timeLine} startGame={startGame}/>
-        <LevelChange level={level} />
+        <GameProgress level={level} timeLine={timeLine} />
+        <GameControl timeLine= {timeLine} startGame={startGame} />
+        <LevelChange level={level} isVisible={levelChange} />
         <TilesBox
           level={level} 
           tiles={tiles}
@@ -32,6 +32,7 @@ GameField.propTypes = {
   timeLine: PropTypes.string,
   activeTiles: PropTypes.array,
   level: PropTypes.number,
+  levelChange: PropTypes.bool,
   startGame: PropTypes.func,
   makeTilePressed: PropTypes.func
 };

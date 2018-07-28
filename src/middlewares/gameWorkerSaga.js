@@ -2,7 +2,7 @@ import { take, put, call, select } from 'redux-saga/effects';
 import { delay } from 'redux-saga';
 import { TILE_PRESSED } from '../actionTypes';
 import { tilesToRememberSelector } from '../selectors';
-import { activeTilesAction, nonActiveTilesAction, nextLevel, prevLevel, updateTilesAction, makeActiveOnPress} from '../actions';
+import { activeTilesAction, nonActiveTilesAction, nextLevel, prevLevel, updateTilesAction, makeActiveOnPress, showlevelChangeModal, hideLevelChangeModal} from '../actions';
 
 export function* showLevelTask(level) {
   yield put(updateTilesAction(level));
@@ -33,4 +33,12 @@ export function* changeLevel(isLevelPassed) {
   } else {
     yield put.resolve(prevLevel());
   }
+
+  yield call(showlevelChangeNotification);
+}
+
+function* showlevelChangeNotification() {
+  yield put(showlevelChangeModal());
+  yield call(delay, 500);
+  yield put(hideLevelChangeModal());
 }

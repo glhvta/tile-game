@@ -22,8 +22,8 @@ function* gameTask() {
   while(true) {
     const level = yield select(levelSelector);
 
-    yield showLevelTask(level);
-    const isLevelPassed = yield checkTheAnswer();
-    yield changeLevel(isLevelPassed);
+    yield call(showLevelTask, level);
+    const isLevelPassed = yield call(checkTheAnswer);
+    yield call(changeLevel, isLevelPassed);
   }
 }

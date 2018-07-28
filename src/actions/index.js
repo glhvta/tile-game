@@ -2,7 +2,9 @@ import {
   GAME_START, GAME_END, CREATE_ACTIVE_TILES, REMOVE_ACTIVE_TILES, 
   TILE_PRESSED, NEXT_LEVEL, PREVIOUS_LEVEL, UPDATE_TILES,
   MAKE_TILE_ACTIVE,
-  SET_FIRST_LEVEL
+  SET_FIRST_LEVEL,
+  SHOW_LEVEL_CHANGE_MODAL,
+  HIDE_LEVEL_CHANGE_MODAL
  } from '../actionTypes';
 
 //todo: make actions creator
@@ -42,3 +44,6 @@ export const prevLevel = () => ({type: PREVIOUS_LEVEL})
 export const firstLevelAction = () => ({type: SET_FIRST_LEVEL})
 
 export const updateTilesAction = level => ({type: UPDATE_TILES, level})
+
+export const showlevelChangeModal = () => ({type: SHOW_LEVEL_CHANGE_MODAL});
+export const hideLevelChangeModal = () => ({type: HIDE_LEVEL_CHANGE_MODAL});

@@ -8,41 +8,36 @@ class LevelChange extends React.PureComponent {
   }
 
   componentWillReceiveProps (nextProps) {
-    this.setState(prev => ({
-      isAnswerCorrect: prev.level < nextProps.level,
-      level: nextProps.level
-    }))
+    if (this.state.level !== nextProps.level) {
+      this.setState(prev => ({
+        isAnswerCorrect: prev.level < nextProps.level,
+        level: nextProps.level
+      }))
+    }
   }
 
   render () {
-    const { className } = this.props;
-console.log('rerender')
-    return (
-      <div className={className}>
-        <i className="fas fa-check"></i>
-      </div> 
+    return this.props.isVisible && (
+      <LevelChangeWrapper isAnswerCorrect={this.state.isAnswerCorrect}>
+        <span>{this.state.isAnswerCorrect ? '✔' : '🞫'}</span>
+      </LevelChangeWrapper> 
     )
   }
 }
 
-export default styled(LevelChange)`
+const LevelChangeWrapper = styled.div`
   position: absolute;
   display: flex;
   align-items:center;
   justify-content: center;
-  width: 0;
-  height: 0;
-  opacity: 0;
+  width: 150px;
+  height: 150px;
   border-radius: 50%;
-  background-color: #27d564f0;
-  font-size: 4.5rem;
-  color: #e9ece5;
-  animation-name: example;
-  animation-duration: 0.8s;
+  background-color: ${props => 
+    props.isAnswerCorrect ? '#27d564f0' : 'red'};
 
-  @keyframes example {
-    0% {width: 120px; height: 120px}
-    50% {width: 150px; height: 150px; opacity:0.7; font-size: 4.5rem;}
-    100% {width: 120px; height: 120px}
-  }
+  font-size: 6rem;
+  color: #e9ece5;
 `;
+
+export default LevelChange;

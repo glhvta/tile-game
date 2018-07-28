@@ -8,3 +8,5 @@ export const levelSelector = state => state.level;
 
 export const timeLineSelector = state => state.timeLine;
 
+export const levelChangeModal = state => state.notifications.levelChange;
+
