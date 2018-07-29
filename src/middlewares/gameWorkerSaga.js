@@ -1,4 +1,4 @@
-import { take, put, call, select } from 'redux-saga/effects';
+import { take, put, call, select, fork } from 'redux-saga/effects';
 import { delay } from 'redux-saga';
 import { TILE_PRESSED } from '../actionTypes';
 import { tilesToRememberSelector, levelSelector } from '../selectors';
@@ -35,7 +35,7 @@ export function* changeLevel(isLevelPassed) {
 
   const level = yield select(levelSelector);
   yield put(updateTilesAction(level));
-  yield call(showlevelChangeNotification);
+  yield fork(showlevelChangeNotification);
 }
 
 function* showlevelChangeNotification() {

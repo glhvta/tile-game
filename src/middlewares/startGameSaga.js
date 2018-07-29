@@ -2,8 +2,9 @@ import {  takeLatest, call, select, race, put, fork } from 'redux-saga/effects';
 import { delay } from 'redux-saga';
 import { GAME_START } from '../actionTypes';
 import { levelSelector } from '../selectors';
-import { showLevelTask, checkTheAnswer, changeLevel } from './gameWorkerSaga';
 import { endGameAction } from '../actions';
+import { secondsInGame } from '../constants';
+import { showLevelTask, checkTheAnswer, changeLevel } from './gameWorkerSaga';
 
 export function* watchGameStart() {
   yield takeLatest(GAME_START, startGame);
@@ -12,7 +13,7 @@ export function* watchGameStart() {
 function* startGame() {
   yield race(
     yield fork(gameTask),
-    yield call(delay, 60000)
+    yield call(delay, secondsInGame * 1000)
   );
 
   yield put(endGameAction());

@@ -14,7 +14,8 @@ class GameField extends React.Component {
     return (
       <GameFieldWrapper>
         <GameProgress level={level} timeLine={timeLine} />
-        <GameControl timeLine= {timeLine} startGame={startGame} />
+        <GameControl timeLine= {timeLine} startGame={startGame} level={level}/>
+        {/* <GameEnd timeLine= {timeLine} level={level}/> */}
         <LevelChange level={level} isVisible={levelChange} />
         <TilesBox
           level={level} 

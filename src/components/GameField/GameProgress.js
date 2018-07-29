@@ -1,10 +1,11 @@
 import React from 'react';
 import styled from 'styled-components';
+import { secondsInGame } from '../../constants'
 import { GAME_IN_PROCESS } from '../../actionTypes';
 
 class ModalFrame extends React.Component {
   state = {
-    secondsLeft: 60,
+    secondsLeft: secondsInGame,
   }
 
   componentDidMount() {

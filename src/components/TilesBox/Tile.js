@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { tileSize } from '../../constants/tile-game';
+import { tileSize } from '../../constants';
 
 const Tile = styled.li`
   list-style: none;

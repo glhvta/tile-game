@@ -2,7 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 import Tile from './Tile';
 import { getTilesBoxWidth } from '../../utils/tile-game';
-import { fullTileWidth } from '../../constants/tile-game';
+import { fullTileWidth } from '../../constants';
 
 class TilesBox extends React.Component {
   render () {
