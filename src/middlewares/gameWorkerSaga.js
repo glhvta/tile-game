@@ -12,18 +12,19 @@ export function* showLevelTask(level) {
 
 export function* checkTheAnswer() {
   const tilesToRemember = yield select(tilesToRememberSelector);
-  let i = 0;
+  let tilePressed = new Set();
 
-  for( i; i < tilesToRemember.length; i++) {
+  while (tilePressed.size !== tilesToRemember.length) {
     const { index } = yield take(TILE_PRESSED);
     yield put(makeActiveOnPress(index));
-
-    if(!tilesToRemember.includes(index)) {
-      break;
+    
+    if (!tilesToRemember.includes(index)) {
+      return false;
     }
+    tilePressed.add(index);
   };
 
-  return i === tilesToRemember.length;
+  return true;
 };
 
 export function* changeLevel(isLevelPassed) {
